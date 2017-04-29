@@ -1,0 +1,310 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{D8A88DF3-639E-4BA7-8D8E-B3066C2552EF}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Library</OutputType>
+    <AssemblyName>Assembly-CSharp-firstpass</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="UnityEngine">
+      <HintPath>..\assets\bin\Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <HintPath>..\assets\bin\Data\Managed\System.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\assets\bin\Data\Managed\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Debugger">
+      <HintPath>..\assets\bin\Data\Managed\Debugger.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppConst.cs" />
+    <Compile Include="AppFacade.cs" />
+    <Compile Include="AppView.cs" />
+    <Compile Include="AtlasAsset.cs" />
+    <Compile Include="AtlasRegionAttacher.cs" />
+    <Compile Include="Base.cs" />
+    <Compile Include="BaseWrap.cs" />
+    <Compile Include="BoneFollower.cs" />
+    <Compile Include="BoundingBoxFollower.cs" />
+    <Compile Include="BuglyAgent.cs" />
+    <Compile Include="BuglyCallback.cs" />
+    <Compile Include="BuglyDemo.cs" />
+    <Compile Include="Callback.cs" />
+    <Compile Include="CompatibilityIP.cs" />
+    <Compile Include="Controller.cs" />
+    <Compile Include="ControllerCommand.cs" />
+    <Compile Include="CustomSkin.cs" />
+    <Compile Include="DebuggerWrap.cs" />
+    <Compile Include="DelegateFactory.cs" />
+    <Compile Include="DisType.cs" />
+    <Compile Include="EventDispatcher.cs" />
+    <Compile Include="EventDispatcherHelper.cs" />
+    <Compile Include="Facade.cs" />
+    <Compile Include="ICommand.cs" />
+    <Compile Include="IController.cs" />
+    <Compile Include="IManager.cs" />
+    <Compile Include="IMessage.cs" />
+    <Compile Include="ISkeletonAnimation.cs" />
+    <Compile Include="IView.cs" />
+    <Compile Include="LinkReferences.cs" />
+    <Compile Include="LogSeverity.cs" />
+    <Compile Include="LuaBinder.cs" />
+    <Compile Include="LuaClient.cs" />
+    <Compile Include="LuaConst.cs" />
+    <Compile Include="LuaCoroutine.cs" />
+    <Compile Include="LuaFramework\ByteBuffer.cs" />
+    <Compile Include="LuaFramework\Converter.cs" />
+    <Compile Include="LuaFramework\ITimerBehaviour.cs" />
+    <Compile Include="LuaFramework\LuaBehaviour.cs" />
+    <Compile Include="LuaFramework\LuaHelper.cs" />
+    <Compile Include="LuaFramework\LuaLoader.cs" />
+    <Compile Include="LuaFramework\LuaManager.cs" />
+    <Compile Include="LuaFramework\Main.cs" />
+    <Compile Include="LuaFramework\ManagerName.cs" />
+    <Compile Include="LuaFramework\NetworkManager.cs" />
+    <Compile Include="LuaFramework\PanelManager.cs" />
+    <Compile Include="LuaFramework\Protocal.cs" />
+    <Compile Include="LuaFramework\SoundManager.cs" />
+    <Compile Include="LuaFramework\TimerInfo.cs" />
+    <Compile Include="LuaFramework\TimerManager.cs" />
+    <Compile Include="LuaFramework\Util.cs" />
+    <Compile Include="LuaFramework_AppConstWrap.cs" />
+    <Compile Include="LuaFramework_ByteBufferWrap.cs" />
+    <Compile Include="LuaFramework_LuaBehaviourWrap.cs" />
+    <Compile Include="LuaFramework_LuaHelperWrap.cs" />
+    <Compile Include="LuaFramework_LuaManagerWrap.cs" />
+    <Compile Include="LuaFramework_NetworkManagerWrap.cs" />
+    <Compile Include="LuaFramework_PanelManagerWrap.cs" />
+    <Compile Include="LuaFramework_SoundManagerWrap.cs" />
+    <Compile Include="LuaFramework_TimerManagerWrap.cs" />
+    <Compile Include="LuaFramework_UtilWrap.cs" />
+    <Compile Include="LuaInterface\EventObject.cs" />
+    <Compile Include="LuaInterface\EventOp.cs" />
+    <Compile Include="LuaInterface\GCRef.cs" />
+    <Compile Include="LuaInterface\LuaArrayTable.cs" />
+    <Compile Include="LuaInterface\LuaBaseRef.cs" />
+    <Compile Include="LuaInterface\LuaByteBuffer.cs" />
+    <Compile Include="LuaInterface\LuaByteBufferAttribute.cs" />
+    <Compile Include="LuaInterface\LuaCSFunction.cs" />
+    <Compile Include="LuaInterface\LuaDelegate.cs" />
+    <Compile Include="LuaInterface\LuaDictTable.cs" />
+    <Compile Include="LuaInterface\LuaDLL.cs" />
+    <Compile Include="LuaInterface\LuaEvent.cs" />
+    <Compile Include="LuaInterface\LuaException.cs" />
+    <Compile Include="LuaInterface\LuaFileUtils.cs" />
+    <Compile Include="LuaInterface\LuaFunction.cs" />
+    <Compile Include="LuaInterface\LuaGCOptions.cs" />
+    <Compile Include="LuaInterface\LuaHook.cs" />
+    <Compile Include="LuaInterface\LuaIndexes.cs" />
+    <Compile Include="LuaInterface\LuaInteger64.cs" />
+    <Compile Include="LuaInterface\LuaMisc.cs" />
+    <Compile Include="LuaInterface\LuaObjectPool.cs" />
+    <Compile Include="LuaInterface\LuaOut.cs" />
+    <Compile Include="LuaInterface\LuaOutMetatable.cs" />
+    <Compile Include="LuaInterface\LuaState.cs" />
+    <Compile Include="LuaInterface\LuaStatic.cs" />
+    <Compile Include="LuaInterface\LuaTable.cs" />
+    <Compile Include="LuaInterface\LuaThread.cs" />
+    <Compile Include="LuaInterface\LuaThreadStatus.cs" />
+    <Compile Include="LuaInterface\LuaTypes.cs" />
+    <Compile Include="LuaInterface\LuaUnityLibs.cs" />
+    <Compile Include="LuaInterface\LuaValueType.cs" />
+    <Compile Include="LuaInterface\Lua_Debug.cs" />
+    <Compile Include="LuaInterface\MonoPInvokeCallbackAttribute.cs" />
+    <Compile Include="LuaInterface\NoToLuaAttribute.cs" />
+    <Compile Include="LuaInterface\NullObject.cs" />
+    <Compile Include="LuaInterface\ObjectTranslator.cs" />
+    <Compile Include="LuaInterface\RaycastBits.cs" />
+    <Compile Include="LuaInterface\ToLua.cs" />
+    <Compile Include="LuaInterface\ToLuaFlags.cs" />
+    <Compile Include="LuaInterface\TouchBits.cs" />
+    <Compile Include="LuaInterface\TypeChecker.cs" />
+    <Compile Include="LuaInterface\UseDefinedAttribute.cs" />
+    <Compile Include="LuaInterface_EventObjectWrap.cs" />
+    <Compile Include="LuaInterface_LuaOutWrap.cs" />
+    <Compile Include="LuaLooper.cs" />
+    <Compile Include="LuaResLoader.cs" />
+    <Compile Include="Manager.cs" />
+    <Compile Include="ManagerWrap.cs" />
+    <Compile Include="MaterialsTextureLoader.cs" />
+    <Compile Include="Message.cs" />
+    <Compile Include="NotiConst.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SkeletonAnimation.cs" />
+    <Compile Include="SkeletonAnimator.cs" />
+    <Compile Include="SkeletonDataAsset.cs" />
+    <Compile Include="SkeletonExtensions.cs" />
+    <Compile Include="SkeletonGhost.cs" />
+    <Compile Include="SkeletonGhostRenderer.cs" />
+    <Compile Include="SkeletonRagdoll.cs" />
+    <Compile Include="SkeletonRagdoll2D.cs" />
+    <Compile Include="SkeletonRenderer.cs" />
+    <Compile Include="SkeletonUtility.cs" />
+    <Compile Include="SkeletonUtilityBone.cs" />
+    <Compile Include="SkeletonUtilityConstraint.cs" />
+    <Compile Include="SkeletonUtilityEyeConstraint.cs" />
+    <Compile Include="SkeletonUtilityGroundConstraint.cs" />
+    <Compile Include="SkeletonUtilityKinematicShadow.cs" />
+    <Compile Include="SkeletonUtilitySubmeshRenderer.cs" />
+    <Compile Include="SocketClient.cs" />
+    <Compile Include="SocketCommand.cs" />
+    <Compile Include="SpineAnimation.cs" />
+    <Compile Include="SpineAtlasRegion.cs" />
+    <Compile Include="SpineAttachment.cs" />
+    <Compile Include="SpineAttributeBase.cs" />
+    <Compile Include="SpineBone.cs" />
+    <Compile Include="SpineEvent.cs" />
+    <Compile Include="SpineSkin.cs" />
+    <Compile Include="SpineSlot.cs" />
+    <Compile Include="Spine\Animation.cs" />
+    <Compile Include="Spine\AnimationState.cs" />
+    <Compile Include="Spine\AnimationStateData.cs" />
+    <Compile Include="Spine\Atlas.cs" />
+    <Compile Include="Spine\AtlasAttachmentLoader.cs" />
+    <Compile Include="Spine\AtlasPage.cs" />
+    <Compile Include="Spine\AtlasRegion.cs" />
+    <Compile Include="Spine\Attachment.cs" />
+    <Compile Include="Spine\AttachmentLoader.cs" />
+    <Compile Include="Spine\AttachmentTimeline.cs" />
+    <Compile Include="Spine\AttachmentType.cs" />
+    <Compile Include="Spine\BlendMode.cs" />
+    <Compile Include="Spine\Bone.cs" />
+    <Compile Include="Spine\BoneData.cs" />
+    <Compile Include="Spine\BoundingBoxAttachment.cs" />
+    <Compile Include="Spine\ColorTimeline.cs" />
+    <Compile Include="Spine\CurveTimeline.cs" />
+    <Compile Include="Spine\DrawOrderTimeline.cs" />
+    <Compile Include="Spine\Event.cs" />
+    <Compile Include="Spine\EventData.cs" />
+    <Compile Include="Spine\EventTimeline.cs" />
+    <Compile Include="Spine\ExposedList.cs" />
+    <Compile Include="Spine\FFDTimeline.cs" />
+    <Compile Include="Spine\FlipXTimeline.cs" />
+    <Compile Include="Spine\FlipYTimeline.cs" />
+    <Compile Include="Spine\Format.cs" />
+    <Compile Include="Spine\IkConstraint.cs" />
+    <Compile Include="Spine\IkConstraintData.cs" />
+    <Compile Include="Spine\IkConstraintTimeline.cs" />
+    <Compile Include="Spine\Json.cs" />
+    <Compile Include="Spine\MeshAttachment.cs" />
+    <Compile Include="Spine\Polygon.cs" />
+    <Compile Include="Spine\RegionAttachment.cs" />
+    <Compile Include="Spine\RotateTimeline.cs" />
+    <Compile Include="Spine\ScaleTimeline.cs" />
+    <Compile Include="Spine\Skeleton.cs" />
+    <Compile Include="Spine\SkeletonBinary.cs" />
+    <Compile Include="Spine\SkeletonBounds.cs" />
+    <Compile Include="Spine\SkeletonData.cs" />
+    <Compile Include="Spine\SkeletonJson.cs" />
+    <Compile Include="Spine\Skin.cs" />
+    <Compile Include="Spine\SkinnedMeshAttachment.cs" />
+    <Compile Include="Spine\Slot.cs" />
+    <Compile Include="Spine\SlotData.cs" />
+    <Compile Include="Spine\TextureFilter.cs" />
+    <Compile Include="Spine\TextureLoader.cs" />
+    <Compile Include="Spine\TextureWrap.cs" />
+    <Compile Include="Spine\Timeline.cs" />
+    <Compile Include="Spine\TrackEntry.cs" />
+    <Compile Include="Spine\TranslateTimeline.cs" />
+    <Compile Include="Spine\WaitForSpineAnimationComplete.cs" />
+    <Compile Include="Spine\WaitForSpineEvent.cs" />
+    <Compile Include="SpriteAttacher.cs" />
+    <Compile Include="SpriteAttachmentLoader.cs" />
+    <Compile Include="StartUpCommand.cs" />
+    <Compile Include="Submesh.cs" />
+    <Compile Include="System_ArrayWrap.cs" />
+    <Compile Include="System_Collections_IEnumeratorWrap.cs" />
+    <Compile Include="System_DelegateWrap.cs" />
+    <Compile Include="System_EnumWrap.cs" />
+    <Compile Include="System_NullObjectWrap.cs" />
+    <Compile Include="System_ObjectWrap.cs" />
+    <Compile Include="System_StringWrap.cs" />
+    <Compile Include="System_TypeWrap.cs" />
+    <Compile Include="UnityEngine_AnimationBlendModeWrap.cs" />
+    <Compile Include="UnityEngine_AnimationClipWrap.cs" />
+    <Compile Include="UnityEngine_AnimationStateWrap.cs" />
+    <Compile Include="UnityEngine_AnimationWrap.cs" />
+    <Compile Include="UnityEngine_AnimatorWrap.cs" />
+    <Compile Include="UnityEngine_ApplicationWrap.cs" />
+    <Compile Include="UnityEngine_AssetBundleWrap.cs" />
+    <Compile Include="UnityEngine_AsyncOperationWrap.cs" />
+    <Compile Include="UnityEngine_AudioClipWrap.cs" />
+    <Compile Include="UnityEngine_AudioSourceWrap.cs" />
+    <Compile Include="UnityEngine_BehaviourWrap.cs" />
+    <Compile Include="UnityEngine_BlendWeightsWrap.cs" />
+    <Compile Include="UnityEngine_BoxColliderWrap.cs" />
+    <Compile Include="UnityEngine_CameraClearFlagsWrap.cs" />
+    <Compile Include="UnityEngine_CameraWrap.cs" />
+    <Compile Include="UnityEngine_CapsuleColliderWrap.cs" />
+    <Compile Include="UnityEngine_CharacterControllerWrap.cs" />
+    <Compile Include="UnityEngine_ColliderWrap.cs" />
+    <Compile Include="UnityEngine_ComponentWrap.cs" />
+    <Compile Include="UnityEngine_Experimental_Director_DirectorPlayerWrap.cs" />
+    <Compile Include="UnityEngine_GameObjectWrap.cs" />
+    <Compile Include="UnityEngine_InputWrap.cs" />
+    <Compile Include="UnityEngine_KeyCodeWrap.cs" />
+    <Compile Include="UnityEngine_LightTypeWrap.cs" />
+    <Compile Include="UnityEngine_LightWrap.cs" />
+    <Compile Include="UnityEngine_MaterialWrap.cs" />
+    <Compile Include="UnityEngine_MeshColliderWrap.cs" />
+    <Compile Include="UnityEngine_MeshRendererWrap.cs" />
+    <Compile Include="UnityEngine_MonoBehaviourWrap.cs" />
+    <Compile Include="UnityEngine_ObjectWrap.cs" />
+    <Compile Include="UnityEngine_ParticleAnimatorWrap.cs" />
+    <Compile Include="UnityEngine_ParticleEmitterWrap.cs" />
+    <Compile Include="UnityEngine_ParticleRendererWrap.cs" />
+    <Compile Include="UnityEngine_ParticleSystemWrap.cs" />
+    <Compile Include="UnityEngine_PhysicsWrap.cs" />
+    <Compile Include="UnityEngine_PlayModeWrap.cs" />
+    <Compile Include="UnityEngine_QualitySettingsWrap.cs" />
+    <Compile Include="UnityEngine_QueueModeWrap.cs" />
+    <Compile Include="UnityEngine_RectTransformWrap.cs" />
+    <Compile Include="UnityEngine_RendererWrap.cs" />
+    <Compile Include="UnityEngine_RenderSettingsWrap.cs" />
+    <Compile Include="UnityEngine_RenderTextureWrap.cs" />
+    <Compile Include="UnityEngine_RigidbodyWrap.cs" />
+    <Compile Include="UnityEngine_ScreenWrap.cs" />
+    <Compile Include="UnityEngine_ShaderWrap.cs" />
+    <Compile Include="UnityEngine_SkinnedMeshRendererWrap.cs" />
+    <Compile Include="UnityEngine_SleepTimeoutWrap.cs" />
+    <Compile Include="UnityEngine_SpaceWrap.cs" />
+    <Compile Include="UnityEngine_SphereColliderWrap.cs" />
+    <Compile Include="UnityEngine_Texture2DWrap.cs" />
+    <Compile Include="UnityEngine_TextureWrap.cs" />
+    <Compile Include="UnityEngine_TimeWrap.cs" />
+    <Compile Include="UnityEngine_TrackedReferenceWrap.cs" />
+    <Compile Include="UnityEngine_TransformWrap.cs" />
+    <Compile Include="UnityEngine_UI_TextWrap.cs" />
+    <Compile Include="UnityEngine_WrapModeWrap.cs" />
+    <Compile Include="UnityEngine_WWWWrap.cs" />
+    <Compile Include="UpdateBonesDelegate.cs" />
+    <Compile Include="View.cs" />
+    <Compile Include="ViewWrap.cs" />
+    <Compile Include="XTask.cs" />
+    <Compile Include="XTaskManager.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

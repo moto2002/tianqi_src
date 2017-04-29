@@ -1,0 +1,121 @@
+using Package;
+using System;
+using UnityEngine;
+
+public class LocalDimensionPetInfoCreator
+{
+	public static MapObjInfo CreatePetMapObjInfo(long ownerID, int index, PetInfo item, int sceneID)
+	{
+		MapObjInfo mapObjInfo = new MapObjInfo();
+		mapObjInfo.objType = GameObjectType.ENUM.Soldier;
+		mapObjInfo.id = item.id;
+		mapObjInfo.ownerId = ownerID;
+		mapObjInfo.name = item.name;
+		mapObjInfo.typeId = item.petId;
+		mapObjInfo.modelId = PetManagerBase.GetPlayerPetModel(item.petId, item.star);
+		mapObjInfo.name = item.name;
+		mapObjInfo.rankValue = item.star;
+		mapObjInfo.pos = new Pos();
+		Vector2 petPoint = MapDataManager.Instance.GetPetPoint(sceneID);
+		mapObjInfo.pos.x = petPoint.x;
+		mapObjInfo.pos.y = petPoint.y;
+		mapObjInfo.vector = new Vector2();
+		mapObjInfo.vector.x = 0f;
+		mapObjInfo.vector.y = 1f;
+		mapObjInfo.mapLayer = 0;
+		mapObjInfo.battleInfo = LocalDimensionPetInfoCreator.CreatePetBattleBaseInfo(item, index);
+		return mapObjInfo;
+	}
+
+	protected static BattleBaseInfo CreatePetBattleBaseInfo(PetInfo item, int index)
+	{
+		BattleBaseInfo battleBaseInfo = new BattleBaseInfo();
+		battleBaseInfo.publicBaseInfo = new PublicBaseInfo();
+		battleBaseInfo.publicBaseInfo.simpleInfo = new SimpleBaseInfo();
+		battleBaseInfo.battleBaseAttr = new BattleBaseAttr();
+		battleBaseInfo.wrapType = GameObjectType.ENUM.Pet;
+		battleBaseInfo.camp = 1;
+		battleBaseInfo.publicBaseInfo.simpleInfo.MoveSpeed = item.publicBaseInfo.simpleInfo.MoveSpeed;
+		battleBaseInfo.publicBaseInfo.simpleInfo.AtkSpeed = item.publicBaseInfo.simpleInfo.AtkSpeed;
+		battleBaseInfo.publicBaseInfo.simpleInfo.Lv = item.publicBaseInfo.simpleInfo.Lv;
+		battleBaseInfo.publicBaseInfo.simpleInfo.Fighting = item.publicBaseInfo.simpleInfo.Fighting;
+		battleBaseInfo.publicBaseInfo.simpleInfo.VipLv = item.publicBaseInfo.simpleInfo.VipLv;
+		battleBaseInfo.publicBaseInfo.Atk = item.publicBaseInfo.Atk;
+		battleBaseInfo.publicBaseInfo.Defence = item.publicBaseInfo.Defence;
+		battleBaseInfo.publicBaseInfo.HpLmt = item.publicBaseInfo.HpLmt;
+		battleBaseInfo.publicBaseInfo.PveAtk = item.publicBaseInfo.PveAtk;
+		battleBaseInfo.publicBaseInfo.PvpAtk = item.publicBaseInfo.PvpAtk;
+		battleBaseInfo.publicBaseInfo.HitRatio = item.publicBaseInfo.HitRatio;
+		battleBaseInfo.publicBaseInfo.DodgeRatio = item.publicBaseInfo.DodgeRatio;
+		battleBaseInfo.publicBaseInfo.CritRatio = item.publicBaseInfo.CritRatio;
+		battleBaseInfo.publicBaseInfo.DecritRatio = item.publicBaseInfo.DecritRatio;
+		battleBaseInfo.publicBaseInfo.CritHurtAddRatio = item.publicBaseInfo.CritHurtAddRatio;
+		battleBaseInfo.publicBaseInfo.ParryRatio = item.publicBaseInfo.ParryRatio;
+		battleBaseInfo.publicBaseInfo.DeparryRatio = item.publicBaseInfo.DeparryRatio;
+		battleBaseInfo.publicBaseInfo.ParryHurtDeRatio = item.publicBaseInfo.ParryHurtDeRatio;
+		battleBaseInfo.publicBaseInfo.SuckBloodScale = item.publicBaseInfo.SuckBloodScale;
+		battleBaseInfo.publicBaseInfo.HurtAddRatio = item.publicBaseInfo.HurtAddRatio;
+		battleBaseInfo.publicBaseInfo.HurtDeRatio = item.publicBaseInfo.HurtDeRatio;
+		battleBaseInfo.publicBaseInfo.PveHurtAddRatio = item.publicBaseInfo.PveHurtAddRatio;
+		battleBaseInfo.publicBaseInfo.PveHurtDeRatio = item.publicBaseInfo.PveHurtDeRatio;
+		battleBaseInfo.publicBaseInfo.PvpHurtAddRatio = item.publicBaseInfo.PvpHurtAddRatio;
+		battleBaseInfo.publicBaseInfo.PvpHurtDeRatio = item.publicBaseInfo.PvpHurtDeRatio;
+		battleBaseInfo.publicBaseInfo.AtkMulAmend = item.publicBaseInfo.AtkMulAmend;
+		battleBaseInfo.publicBaseInfo.DefMulAmend = item.publicBaseInfo.DefMulAmend;
+		battleBaseInfo.publicBaseInfo.HpLmtMulAmend = item.publicBaseInfo.HpLmtMulAmend;
+		battleBaseInfo.publicBaseInfo.PveAtkMulAmend = item.publicBaseInfo.PveAtkMulAmend;
+		battleBaseInfo.publicBaseInfo.PvpAtkMulAmend = item.publicBaseInfo.PvpAtkMulAmend;
+		battleBaseInfo.battleBaseAttr.ActPointLmt = item.actPointLmt;
+		battleBaseInfo.publicBaseInfo.ActPointRecoverSpeedAmend = item.publicBaseInfo.ActPointRecoverSpeedAmend;
+		battleBaseInfo.publicBaseInfo.VpLmt = item.publicBaseInfo.VpLmt;
+		battleBaseInfo.publicBaseInfo.VpLmtMulAmend = item.publicBaseInfo.VpLmtMulAmend;
+		battleBaseInfo.publicBaseInfo.VpAtk = item.publicBaseInfo.VpAtk;
+		battleBaseInfo.publicBaseInfo.VpAtkMulAmend = item.publicBaseInfo.VpAtkMulAmend;
+		battleBaseInfo.publicBaseInfo.VpResume = item.publicBaseInfo.VpResume;
+		battleBaseInfo.publicBaseInfo.IdleVpResume = item.publicBaseInfo.IdleVpResume;
+		battleBaseInfo.publicBaseInfo.WaterBuffAddProbAddAmend = item.publicBaseInfo.WaterBuffAddProbAddAmend;
+		battleBaseInfo.publicBaseInfo.WaterBuffDurTimeAddAmend = item.publicBaseInfo.WaterBuffDurTimeAddAmend;
+		battleBaseInfo.publicBaseInfo.ThunderBuffAddProbAddAmend = item.publicBaseInfo.ThunderBuffAddProbAddAmend;
+		battleBaseInfo.publicBaseInfo.ThunderBuffDurTimeAddAmend = item.publicBaseInfo.ThunderBuffDurTimeAddAmend;
+		battleBaseInfo.publicBaseInfo.HealIncreasePercent = item.publicBaseInfo.HealIncreasePercent;
+		battleBaseInfo.publicBaseInfo.CritAddValue = item.publicBaseInfo.CritAddValue;
+		battleBaseInfo.publicBaseInfo.HpRestore = item.publicBaseInfo.HpRestore;
+		battleBaseInfo.battleBaseAttr.BuffMoveSpeedMulPosAmend = 0;
+		battleBaseInfo.battleBaseAttr.BuffActSpeedMulPosAmend = 0;
+		battleBaseInfo.battleBaseAttr.SkillTreatScaleBOAtk = 0;
+		battleBaseInfo.battleBaseAttr.SkillTreatScaleBOHpLmt = 0;
+		battleBaseInfo.battleBaseAttr.SkillNmlDmgScale = 0;
+		battleBaseInfo.battleBaseAttr.SkillNmlDmgAddAmend = 0;
+		battleBaseInfo.battleBaseAttr.SkillHolyDmgScaleBOMaxHp = 0;
+		battleBaseInfo.battleBaseAttr.SkillHolyDmgScaleBOCurHp = 0;
+		battleBaseInfo.battleBaseAttr.Affinity = item.affinity;
+		battleBaseInfo.battleBaseAttr.OnlineTime = PetManager.Instance.GetExistTime(item);
+		battleBaseInfo.battleBaseAttr.ActPoint = item.actPoint;
+		battleBaseInfo.battleBaseAttr.Hp = (long)((double)battleBaseInfo.publicBaseInfo.HpLmt * (1.0 + (double)battleBaseInfo.publicBaseInfo.HpLmtMulAmend * 0.001));
+		battleBaseInfo.battleBaseAttr.Vp = (int)((double)battleBaseInfo.publicBaseInfo.VpLmt * (1.0 + (double)battleBaseInfo.publicBaseInfo.VpLmtMulAmend * 0.001));
+		battleBaseInfo.skills.AddRange(PetManager.Instance.GetSkillInfo(item.petId));
+		battleBaseInfo.ownedListIdx = index;
+		battleBaseInfo.ownedIds.Clear();
+		battleBaseInfo.finalOwnerId = EntityWorld.Instance.EntSelf.ID;
+		battleBaseInfo.isLoading = false;
+		battleBaseInfo.isFit = false;
+		battleBaseInfo.isInFit = false;
+		battleBaseInfo.isFighting = false;
+		battleBaseInfo.isFixed = false;
+		battleBaseInfo.isStatic = false;
+		battleBaseInfo.isTaunt = false;
+		battleBaseInfo.isSuperArmor = false;
+		battleBaseInfo.isIgnoreDmgFormula = false;
+		battleBaseInfo.isCloseRenderer = false;
+		battleBaseInfo.isStun = false;
+		battleBaseInfo.isMoveCast = false;
+		battleBaseInfo.isAssaulting = false;
+		battleBaseInfo.isKnocking = false;
+		battleBaseInfo.isSuspended = false;
+		battleBaseInfo.isSkillManaging = false;
+		battleBaseInfo.isSkillPressing = false;
+		battleBaseInfo.isBorning = true;
+		battleBaseInfo.isBoss = false;
+		return battleBaseInfo;
+	}
+}

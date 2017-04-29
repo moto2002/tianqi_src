@@ -1,0 +1,67 @@
+using GameData;
+using Package;
+using System;
+using System.Collections.Generic;
+
+public class LocalBattleBuffCalculatorTreat2Handler : LocalBattleBuffCalculatorHandler
+{
+	public static void HandleBuff(Buff buffData, EntityParent caster, EntityParent target, int fromSkillID, int fromSkillLevel, XDict<GameData.AttrType, BattleSkillAttrAdd> fromSkillAttrChange, bool isCommunicateMix)
+	{
+		LocalBattleBuffCalculatorTreat2Handler.AppTreat(buffData, caster, target, fromSkillID, fromSkillLevel, fromSkillAttrChange, isCommunicateMix);
+	}
+
+	public static void IntervalBuff(Buff buffData, EntityParent caster, EntityParent target, int fromSkillID, int fromSkillLevel, XDict<GameData.AttrType, BattleSkillAttrAdd> fromSkillAttrChange, bool isCommunicateMix)
+	{
+		LocalBattleBuffCalculatorTreat2Handler.AppTreat(buffData, caster, target, fromSkillID, fromSkillLevel, fromSkillAttrChange, isCommunicateMix);
+	}
+
+	public static void KillBuff(int buffID, long casterID, long targetID, int fromSkillLevel, bool isCommunicateMix)
+	{
+	}
+
+	protected static void AppTreat(Buff buffData, EntityParent caster, EntityParent target, int fromSkillID, int fromSkillLevel, XDict<GameData.AttrType, BattleSkillAttrAdd> fromSkillAttrChange, bool isCommunicateMix)
+	{
+		if (!LocalAgent.GetEntityCalculatable(caster, isCommunicateMix))
+		{
+			return;
+		}
+		if (!LocalAgent.GetEntityCalculatable(target, isCommunicateMix))
+		{
+			return;
+		}
+		if (target.Hp == target.RealHpLmt)
+		{
+			return;
+		}
+		XDict<GameData.AttrType, long> buffTargetTempAttr = LocalBattleBuffCalculatorHandler.GetBuffTargetTempAttr(buffData, caster, fromSkillLevel, fromSkillAttrChange);
+		long num = BattleCalculator.CalculateTreat2ment(target.BattleBaseAttrs, buffTargetTempAttr);
+		if (num != 0L)
+		{
+			List<ClientDrvBuffInfo> casterBuffInfo = null;
+			List<ClientDrvBuffInfo> targetBuffInfo = null;
+			if (isCommunicateMix)
+			{
+				casterBuffInfo = LocalAgent.MakeClientDrvBuffInfo(caster.ID);
+				targetBuffInfo = LocalAgent.MakeClientDrvBuffInfo(target.ID);
+			}
+			long num2 = LocalAgent.GetSpiritCurHp(target, isCommunicateMix) + num;
+			if (num2 > target.RealHpLmt)
+			{
+				num2 = target.RealHpLmt;
+			}
+			Pos pos = null;
+			if (caster.Actor)
+			{
+				pos = new Pos();
+				pos.x = caster.Actor.FixTransform.get_position().x * 100f;
+				pos.y = caster.Actor.FixTransform.get_position().z * 100f;
+			}
+			LocalAgent.SetSpiritCurHp(target, num2, isCommunicateMix);
+			if (isCommunicateMix)
+			{
+				GlobalBattleNetwork.Instance.SendClientDriveBattleBuffDamage(caster.ID, target.ID, num2, num2, num, buffData.id, true, casterBuffInfo, targetBuffInfo, new List<long>(), string.Concat(target.HpRestore));
+			}
+			LocalBattleProtocolSimulator.SendTreat(target.ID, (GameObjectType.ENUM)target.WrapType, caster.ID, (GameObjectType.ENUM)caster.WrapType, BattleAction_Treat.TreatSrcType.HpRestore, num, num2, pos);
+		}
+	}
+}
